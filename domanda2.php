@@ -21,7 +21,7 @@
 
     <?php
       if ($tipoOperazione==5 && trim($queryUtente) != null){
-        $link = mysqli_connect("localhost", "studenteInsert", "", "ESERCIZI_SQL");
+        $link = mysqli_connect($_SESSION['servername'], "studenteInsert", $_SESSION['psw'], $_SESSION['DBname']);
         if ($link === false) {
             die("ERROR:Could not connect. " . mysqli_connect_error());
         }
@@ -58,7 +58,7 @@
             $_SESSION['DomandaSelezionata'] = $_SESSION['DomandaSelezionata']+1;
           }
 
-          $link = mysqli_connect("localhost", "studente", "", "ESERCIZI_SQL");
+          $link = mysqli_connect($_SESSION['servername'], $_SESSION['usertype'], $_SESSION['psw'],   $_SESSION['DBname']);
           if ($link === false) {
               die("ERROR:Could not connect. " . mysqli_connect_error());
           }
@@ -78,7 +78,7 @@
               <!--<textarea class="form-control" cols="70" rows="7" readonly> -->
                 <?php
                   if ( ( $queryUtente!= null && $tipoOperazione==2 ) || ( $queryUtente!= null && $tipoOperazione==3) ) {
-                    $link = mysqli_connect("localhost", "studente", "", $_SESSION['nomeDatabaseSelezionato']);
+                    $link = mysqli_connect($_SESSION['servername'], $_SESSION['usertype'], $_SESSION['psw'], $_SESSION['nomeDatabaseSelezionato']);
                     if ($link === false) {
                         die("ERROR:Could not connect. " . mysqli_connect_error());
                     }
@@ -116,7 +116,7 @@
               echo "<textarea class='form-control' cols='70' rows='7' readonly placeholder='Qui potrai visualizzare la soluzione'>";
             }
             if ($tipoOperazione==3){
-              $link = mysqli_connect("localhost", "studente", "", "ESERCIZI_SQL");
+              $link = mysqli_connect($_SESSION['servername'], $_SESSION['usertype'], $_SESSION['psw'],   $_SESSION['DBname']);
               if ($link === false) {
                   die("ERROR:Could not connect. " . mysqli_connect_error());
               }
@@ -135,7 +135,7 @@
               <!--<textarea class="form-control" cols="70" rows="7" readonly>-->
                   <?php
                     if ($tipoOperazione==3){
-                      $link = mysqli_connect("localhost", "studente", "", $_SESSION['nomeDatabaseSelezionato']);
+                      $link = mysqli_connect($_SESSION['servername'], $_SESSION['usertype'], $_SESSION['psw'], $_SESSION['nomeDatabaseSelezionato']);
                       if ($link === false) {
                           die("ERROR:Could not connect. " . mysqli_connect_error());
                       }
@@ -169,7 +169,7 @@
 
         <div class="row justify-content-around">
           <?php
-            $link = mysqli_connect("localhost", "studente", "", "ESERCIZI_SQL");
+            $link = mysqli_connect($_SESSION['servername'], $_SESSION['usertype'], $_SESSION['psw'],$_SESSION['DBname']);
             if ($link === false) {
                 die("ERROR:Could not connect. " . mysqli_connect_error());
             }
@@ -194,7 +194,7 @@
           <button type="submit" class="btn btn-primary" name="tipoOperazioneRichiesta" value="5"> Invia la risposta al Docente </button>
 
           <?php
-            $link = mysqli_connect("localhost", "studente", "", "ESERCIZI_SQL");
+            $link = mysqli_connect($_SESSION['servername'], $_SESSION['usertype'], $_SESSION['psw'], $_SESSION['DBname']);
             if ($link === false) {
                 die("ERROR:Could not connect. " . mysqli_connect_error());
             }

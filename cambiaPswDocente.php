@@ -3,7 +3,7 @@
   if(!isset($_SESSION['username']) || empty($_SESSION['username'])) {
    header('location: index.php');
  }
-  $link = mysqli_connect("localhost", "studente", "", "ESERCIZI_SQL");
+  $link = mysqli_connect($_SESSION['servername'], $_SESSION['usertype'], $_SESSION['psw'],   $_SESSION['DBname']);
   // Check connection
   if ($link === false) {
     die("ERROR: Could not connect. " . mysqli_connect_error());

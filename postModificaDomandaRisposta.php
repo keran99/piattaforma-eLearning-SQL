@@ -3,7 +3,7 @@
   if(!isset($_SESSION['username']) || empty($_SESSION['username'])) {
    header('location: index.php');
  } else {
-   $link = mysqli_connect("localhost", "root", "", "ESERCIZI_SQL");
+   $link = mysqli_connect($_SESSION['servername'], $_SESSION['usertype'], $_SESSION['psw'], $_SESSION['DBname']);
      if ($link === false) {
          die("ERROR:Could not connect. " . mysqli_connect_error());
      }
@@ -43,7 +43,7 @@
                   La domanda non può essere vuota
                 </div>";
         } else {
-          $link = mysqli_connect("localhost", "root", "", "ESERCIZI_SQL");
+          $link = mysqli_connect($_SESSION['servername'], $_SESSION['usertype'], $_SESSION['psw'], $_SESSION['DBname']);
           if ($link === false) {
               die("ERROR:Could not connect. " . mysqli_connect_error());
           }
@@ -59,7 +59,7 @@
 
       if ($operazione==2){
         //DELETE FROM tabella WHERE condizione
-        $link = mysqli_connect("localhost", "root", "", "ESERCIZI_SQL");
+        $link = mysqli_connect($_SESSION['servername'], $_SESSION['usertype'], $_SESSION['psw'], $_SESSION['DBname']);
         if ($link === false) {
             die("ERROR:Could not connect. " . mysqli_connect_error());
         }
@@ -85,7 +85,7 @@
           </thead>
           <tbody>
 
-          <?php $link = mysqli_connect("localhost", "root", "", "ESERCIZI_SQL");
+          <?php $link = mysqli_connect($_SESSION['servername'], $_SESSION['usertype'], $_SESSION['psw'], $_SESSION['DBname']);
             if ($link === false) {
                 die("ERROR:Could not connect. " . mysqli_connect_error());
             }

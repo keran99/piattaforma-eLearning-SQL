@@ -18,7 +18,7 @@
     <div class="container">
       <div class="row justify-content-around">
         <?php
-          $link = mysqli_connect("localhost", "studente", "", $_SESSION['nomeDatabaseSelezionato']);
+          $link = mysqli_connect($_SESSION['servername'], $_SESSION['usertype'], $_SESSION['psw'], $_SESSION['nomeDatabaseSelezionato']);
           if ($link === false) {
               die("ERROR:Could not connect. " . mysqli_connect_error());
           }

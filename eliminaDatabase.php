@@ -3,7 +3,7 @@ session_start();
 if(!isset($_SESSION['username']) || empty($_SESSION['username'])) {
  header('location: index.php');
 } else {
- $link = mysqli_connect("localhost", "root", "", "ESERCIZI_SQL");
+ $link = mysqli_connect($_SESSION['servername'], $_SESSION['usertype'], $_SESSION['psw'], $_SESSION['DBname']);
    if ($link === false) {
        die("ERROR:Could not connect. " . mysqli_connect_error());
    }
@@ -32,14 +32,14 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])) {
     <!-- caricamento del navbar -->
     <?php require_once("navbarDocente.php") ?>
     <?php
-      $link = mysqli_connect("localhost", "root", "", "ESERCIZI_SQL");
+      $link = mysqli_connect($_SESSION['servername'], $_SESSION['usertype'], $_SESSION['psw'], $_SESSION['DBname']);
       if ($link === false) {
           die("ERROR:Could not connect. " . mysqli_connect_error());
       };
       $sqlDeleteInfoDatabase = "DELETE FROM info_database WHERE NomeDatabase ='" . $_POST['nomeDatabaseSelezionato'] . "'";
       $result = mysqli_query($link, $sqlDeleteInfoDatabase);
 
-      $link2 = mysqli_connect("localhost", "root", "", $_POST['nomeDatabaseSelezionato']);
+      $link2 = mysqli_connect($_SESSION['servername'], $_SESSION['usertype'], $_SESSION['psw'], $_POST['nomeDatabaseSelezionato']);
       if ($link === false) {
           die("ERROR:Could not connect. " . mysqli_connect_error());
       };

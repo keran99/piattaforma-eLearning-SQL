@@ -53,12 +53,17 @@
     } else {
     if ($riga['Password'] == hash_hmac('sha512', 'salt' . $psw, '3')) {
       $_SESSION['username'] = $username;
-      echo "logged";
+      $_SESSION['servername']="localhost";
+      $_SESSION['psw']="";
+      $_SESSION['DBname']="ESERCIZI_SQL";
+      //echo "logged";
       if ($riga['TipoAccesso']=="Limitato"){
         header('location: homepageStudente.php');
+          $_SESSION['usertype']="studente";
       }
       if ($riga['TipoAccesso'] =="Libero"){
         header('location: homepageDocente.php');
+          $_SESSION['usertype']="root";
       }
      } else {
       echo "<nav class='navbar navbar-expand-lg navbar navbar-dark bg-primary'>

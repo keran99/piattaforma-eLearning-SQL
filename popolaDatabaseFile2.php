@@ -3,7 +3,7 @@
   if(!isset($_SESSION['username']) || empty($_SESSION['username'])) {
    header('location: index.php');
  } else {
-   $link = mysqli_connect("localhost", "root", "", "ESERCIZI_SQL");
+   $link = mysqli_connect($_SESSION['servername'], $_SESSION['usertype'], $_SESSION['psw'], $_SESSION['DBname']);
      if ($link === false) {
          die("ERROR:Could not connect. " . mysqli_connect_error());
      }
@@ -33,7 +33,7 @@
     <?php require_once("navbarDocente.php") ?>
 
     <?php
-      $mysqli = new mysqli('localhost', 'root', '', $_SESSION['nomeDatabaseSelezionato']);
+      $mysqli = new mysqli($_SESSION['servername'], $_SESSION['usertype'], $_SESSION['psw'], $_SESSION['nomeDatabaseSelezionato']);
       if ($mysqli->connect_error) {
         die('Errore di connessione (' . $mysqli->connect_errno . ')' . $mysqli->connect_error);
       }
