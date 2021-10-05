@@ -1,3 +1,4 @@
+<!-- Page that allows teachers to view all queries sent by students -->
 <?php
   session_start();
   if(!isset($_SESSION['username']) || empty($_SESSION['username'])) {
@@ -19,6 +20,8 @@
     }
  }
 ?>
+
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">

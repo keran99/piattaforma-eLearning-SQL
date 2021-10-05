@@ -1,3 +1,4 @@
+<!-- Page that allows students to view all questions associated with a previously selected database -->
 <?php
   session_start();
 
@@ -8,6 +9,7 @@
   $_SESSION['nomeDatabaseSelezionato'] = $_POST['nomeDatabaseSelezionato'];
 ?>
 
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">

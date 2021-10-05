@@ -1,3 +1,4 @@
+<!-- Page that allows the teacher to create a new database -->
 <?php
   session_start();
   if(!isset($_SESSION['username']) || empty($_SESSION['username'])) {
@@ -23,6 +24,8 @@
   $descrizione = $_POST['descrizione'];
   $immagine = $_POST['immagine'];
 ?>
+
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
@@ -39,6 +42,8 @@
     <?php
       $check=true;
       $checkCreazione=true;
+
+      // Database name not inserted
       if($nomeDatabase==null){
         echo "<div class='alert alert-warning alert-dismissible fade show mb-0' role='alert'>
                 Inserire il nome del database
@@ -46,6 +51,7 @@
         $check=false;
       }
 
+      // Code for creating tables not inserted
       if($codiceCreaTabelle==null){
         echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
                 Non è stato inserito il codice per la creazione della tabella
@@ -93,11 +99,15 @@
           };
 
           $sqlCreazione = "INSERT INTO info_database (NomeDatabase, Descrizione, Immagine) VALUES ('" .$nomeDatabase . "','" . $descrizione . "','" . $immagine . "')";
+
+          // Error during creation od database
           if(!$result = mysqli_query($link2, $sqlCreazione)){
             echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
                     Si è verificato un errore
                   </div>";
-          } else {
+          }
+          // Database created successfully
+          else {
             echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
                     La creazione del database è avvenuta con successo
                   </div>";
@@ -112,6 +122,7 @@
         <h3 class="mt-2"> CREA IL DATABASE </h3>
       </div>
 
+      <!-- Form to create a new database -->
       <form action='creaDatabase2.php' method='post'>
         <div class="row justify-content-around mt-2">
           <input class="form-control" name="nomeDatabase" placeholder="Inserire il nome del database" required>

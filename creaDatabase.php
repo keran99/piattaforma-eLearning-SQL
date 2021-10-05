@@ -1,3 +1,4 @@
+<!-- Page where the teacher enters the data for the creation of a new database -->
 <?php
   session_start();
   if(!isset($_SESSION['username']) || empty($_SESSION['username'])) {
@@ -19,6 +20,8 @@
     }
   }
 ?>
+
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
@@ -37,6 +40,7 @@
         <h3 class="mt-2"> CREA IL DATABASE </h3>
       </div>
 
+      <!-- Form to create a new database -->
       <form action='creaDatabase2.php' method='post'>
         <div class="row justify-content-around mt-2">
           <input class="form-control" name="nomeDatabase" placeholder="Inserire il nome del database" required>

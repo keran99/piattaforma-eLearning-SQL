@@ -1,3 +1,4 @@
+<!-- navbar of students -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary justify-content-between">
   <a class="navbar-brand" href="homepageStudente.php">Basi di Dati - SQL </a>
 

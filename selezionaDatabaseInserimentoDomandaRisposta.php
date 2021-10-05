@@ -1,6 +1,9 @@
+<!-- Page that allows teachers to select a database to be able to proceed with the insertion of a new question with or without correct answer -->
 <?php
 session_start();
 ?>
+
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">

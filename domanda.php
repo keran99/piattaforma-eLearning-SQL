@@ -1,3 +1,4 @@
+<!-- Page that allows students to view the questions associated with a particular database -->
 <?php
   session_start();
   if(!isset($_SESSION['username']) || empty($_SESSION['username'])) {
@@ -6,6 +7,7 @@
   $_SESSION['DomandaSelezionata'] = $_POST['DomandaSelezionata']
 ?>
 
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
@@ -20,10 +22,14 @@
 
     <div class="container">
       <div class="row justify-content-around">
-        <?php $link = mysqli_connect($_SESSION['servername'], $_SESSION['usertype'], $_SESSION['psw'],   $_SESSION['DBname']);
+        <?php
+          // DB connection
+          $link = mysqli_connect($_SESSION['servername'], $_SESSION['usertype'], $_SESSION['psw'],   $_SESSION['DBname']);
           if ($link === false) {
               die("ERROR:Could not connect. " . mysqli_connect_error());
           }
+
+          // Extraction and viewing questions associated with the selected database
           $sql = "SELECT * FROM DOMANDA WHERE (Numero = '" . $_SESSION['DomandaSelezionata'] . "' AND NomeDatabase = '" . $_SESSION['nomeDatabaseSelezionato'] . "')";
           $result = mysqli_query($link, $sql);
           $riga = mysqli_fetch_array(($result));
@@ -46,6 +52,8 @@
             ?>
           </div>
         </div>
+
+        <!-- Previous question buttons -->
         <div class="row justify-content-around">
           <?php
             $link = mysqli_connect($_SESSION['servername'], $_SESSION['usertype'], $_SESSION['psw'], $_SESSION['DBname']);
@@ -61,16 +69,20 @@
             }
           ?>
 
+          <!-- Button to see the result of query -->
           <button type="submit" class="btn btn-primary" name="tipoOperazioneRichiesta" value="2"> Visualizza il risulatato della query </button>
 
           <?php
+            // Botton that show correct answer
             if ($riga['Risposta']!= null){
               echo "<button type='submit' class='btn btn-primary' name='tipoOperazioneRichiesta' value='3'>  Visualizza la risposta corretta </button>";
             }
           ?>
 
+          <!-- Button to send the query to the teacher -->
           <button type="submit" class="btn btn-primary" name="tipoOperazioneRichiesta" value="5"> Invia la risposta al Docente </button>
 
+          <!-- Next question button -->
           <?php
             $link = mysqli_connect($_SESSION['servername'], $_SESSION['usertype'], $_SESSION['psw'],   $_SESSION['DBname']);
             if ($link === false) {

@@ -1,3 +1,5 @@
+<!-- Page that allows teachers to modify the question and / or correct answer -->
+
 <?php
   session_start();
   if(!isset($_SESSION['username']) || empty($_SESSION['username'])) {
@@ -22,6 +24,8 @@
   $domanda = $_POST['DomandaModifica'];
   $risposta = $_POST['RispostaModifica']
 ?>
+
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">

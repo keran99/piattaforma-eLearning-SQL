@@ -1,3 +1,4 @@
+<!-- Logout with session destruction -->
 <?php
   session_start();
   session_destroy();

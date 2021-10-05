@@ -1,3 +1,4 @@
+<!-- Page that populates the database from code -->
 <?php
   session_start();
   if(!isset($_SESSION['username']) || empty($_SESSION['username'])) {
@@ -20,6 +21,8 @@
  }
   $codice = $_POST['inputCodice']
 ?>
+
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">

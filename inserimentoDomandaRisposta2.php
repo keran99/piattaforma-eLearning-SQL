@@ -1,3 +1,4 @@
+<!-- Page that allows teachers to insert a new question with / without answer -->
 <?php
   session_start();if(!isset($_SESSION['username']) || empty($_SESSION['username'])) {
    header('location: index.php');
@@ -21,6 +22,8 @@
   $domanda = $_POST['domanda'];
   $risposta = $_POST['risposta'];
 ?>
+
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">

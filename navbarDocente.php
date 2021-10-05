@@ -1,3 +1,4 @@
+<!-- navbar of teachers -->
 <nav class="navbar navbar-dark bg-primary justify-content-between">
   <a class="navbar-brand" href="homepageDocente.php">Basi di Dati - SQL </a>
   <ul class="navbar-nav">

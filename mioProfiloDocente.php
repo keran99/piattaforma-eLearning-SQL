@@ -1,3 +1,4 @@
+<!-- Page that allows teachers to view their personal data and to start the procedure for changing their password -->
 <?php
   session_start();
   if(!isset($_SESSION['username']) || empty($_SESSION['username'])) {
@@ -14,6 +15,8 @@
   $riga = mysqli_fetch_array($result);
 
 ?>
+
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">

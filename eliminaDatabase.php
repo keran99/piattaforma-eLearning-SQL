@@ -1,3 +1,4 @@
+<!-- Page that allows teachers to delete a database -->
 <?php
 session_start();
 if(!isset($_SESSION['username']) || empty($_SESSION['username'])) {
@@ -19,6 +20,8 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])) {
   }
 }
 ?>
+
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
@@ -39,10 +42,14 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])) {
       $sqlDeleteInfoDatabase = "DELETE FROM info_database WHERE NomeDatabase ='" . $_POST['nomeDatabaseSelezionato'] . "'";
       $result = mysqli_query($link, $sqlDeleteInfoDatabase);
 
+      /*
       $link2 = mysqli_connect($_SESSION['servername'], $_SESSION['usertype'], $_SESSION['psw'], $_POST['nomeDatabaseSelezionato']);
       if ($link === false) {
           die("ERROR:Could not connect. " . mysqli_connect_error());
       };
+      */
+
+      // Delete Database
       $sqlDeleteDB = "DROP DATABASE " . $_POST['nomeDatabaseSelezionato'];
       $result = mysqli_query($link, $sqlDeleteDB);
     ?>

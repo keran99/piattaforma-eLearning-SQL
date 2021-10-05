@@ -1,3 +1,4 @@
+<!-- Page that modify the question and/or correct answer -->
 <?php
   session_start();
   if(!isset($_SESSION['username']) || empty($_SESSION['username'])) {
@@ -23,6 +24,8 @@
   $numero = $_POST['NumeroModifica'];
   $operazione = $_POST['operazione']
 ?>
+
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">

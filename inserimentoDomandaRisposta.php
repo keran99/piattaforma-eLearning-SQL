@@ -1,3 +1,4 @@
+<!-- Page where the teacher can enter data to insert a new question with / without answer -->
 <?php
   session_start();
   if(!isset($_SESSION['username']) || empty($_SESSION['username'])) {
@@ -20,6 +21,8 @@
  }
   $_SESSION['nomeDatabaseSelezionato'] = $_POST['nomeDatabaseSelezionato']
 ?>
+
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">

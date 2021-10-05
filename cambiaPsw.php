@@ -1,3 +1,4 @@
+<!--Page that allows students to change their password -->
 <?php
   session_start();
   if(!isset($_SESSION['username']) || empty($_SESSION['username'])) {
@@ -14,6 +15,8 @@
   $riga = mysqli_fetch_array($result);
 
 ?>
+
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
@@ -33,11 +36,14 @@
       $nuovaPsw = $_POST['nuovaPsw'];
       $confermaNuovaPsw = $_POST['confermaNuovaPsw'];
 
+      // New password and new password confirmation do not match
       if ($nuovaPsw != $confermaNuovaPsw){
         echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
                 ERRORE: password e conferma password non corrispondono
               </div>";
-      } else if ($vecchiaPsw == $nuovaPsw){
+      }
+      // New password and curren password are the same
+      else if ($vecchiaPsw == $nuovaPsw){
         echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
                 ERRORE: la password attuale e la nuova password sono uguali
               </div>";
@@ -46,23 +52,29 @@
         if ($link === false) {
           die("ERROR: Could not connect. " . mysqli_connect_error());
         }
+  
+        // Checking the correctness of the current password
         $queryCheckPsw = "SELECT * FROM UTENTE WHERE Username = '$username'";
         $result = mysqli_query($link, $queryCheckPsw);
         $riga = mysqli_fetch_array($result);
         if ($riga['Password'] == hash_hmac('sha512', 'salt' . $vecchiaPsw, '3')) {
           $pswCriptato =  hash_hmac('sha512', 'salt' . $nuovaPsw, '3');
-          //UPDATE table_name SET column1=value, column2=value2,... WHERE some_column=some_value
           $queryUpdatePsw = "UPDATE Utente SET Password ='" . $pswCriptato . "' WHERE username ='" . $username . "'";
+          // An error occurred during the password change
           if(!$result2 = mysqli_query($link, $queryUpdatePsw)){
             echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
                     ERRORE: Si è verificato un errore durante la modifica della password
                   </div>";
-          } else {
+          }
+          // Password changed successfully
+          else {
             echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
                     Modifica avvenuta con succcesso
                   </div>";
           }
-        } else {
+        }
+        // Incorrect current password
+        else {
           echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
                   ERRORE: la password attuale errate
                 </div>";
@@ -70,6 +82,7 @@
       }
     ?>
 
+    <!-- Form where you can view: name, surname, username. And you can change the password.-->
     <div class="container">
       <div class="row justify-content-around">
         <div class="col-6 border border-primary mt-3">

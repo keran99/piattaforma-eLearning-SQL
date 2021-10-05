@@ -1,3 +1,4 @@
+<!-- Page that allows teachers to view the contents of a previously selected database -->
 <?php
   session_start();
   if(!isset($_SESSION['username']) || empty($_SESSION['username'])) {
@@ -20,6 +21,8 @@
   }
   $_SESSION['nomeDatabaseSelezionato'] = $_POST['nomeDatabaseSelezionato'];
 ?>
+
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">

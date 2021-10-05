@@ -1,3 +1,4 @@
+<!-- Page that allows teachers to view a specific query sent by students and execute it -->
 <?php
   session_start();
   if(!isset($_SESSION['username']) || empty($_SESSION['username'])) {
@@ -22,6 +23,8 @@
  $_SESSION['domanda'] = $_POST['domanda'];
  $_SESSION['nomeDB'] = $_POST['nomeDB'];
 ?>
+
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">

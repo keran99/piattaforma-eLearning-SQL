@@ -1,3 +1,4 @@
+<!-- Page that allows students to write and run a query -->
 <?php
   session_start();
   if(!isset($_SESSION['username']) || empty($_SESSION['username'])) {
@@ -6,6 +7,7 @@
   $queryInserita = $_POST['queryLiberaUtente'];
 ?>
 
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">

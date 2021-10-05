@@ -1,9 +1,12 @@
+<!-- Page that allows students to view the contents of a previously selected database -->
 <?php
   session_start();
   if(!isset($_SESSION['username']) || empty($_SESSION['username'])) {
    header('location: index.php');
  }
 ?>
+
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
